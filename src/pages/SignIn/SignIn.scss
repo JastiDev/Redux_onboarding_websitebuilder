@@ -1,0 +1,21 @@
+.login-page {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: center;
+
+  .login-page__content {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+
+    > * {
+      margin-bottom: 20px;
+    }
+  }
+}
+
+.login-btn-wrapper {
+  display: flex;
+  justify-content: center;
+}

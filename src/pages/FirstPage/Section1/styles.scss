@@ -1,0 +1,52 @@
+.facebook-btn {
+  width: 100%;
+  min-width: 300px;
+  padding: 10px 24px;
+  background-color: #4c6da5;
+  font-weight: 700;
+  font-size: 20px;
+  text-decoration: none;
+  text-align: center;
+
+  svg {
+    font-size: 30px;
+    margin-right: 20px;
+  }
+}
+
+.input {
+  display: inline-block;
+  margin-right: 10px;
+  padding: 0px 20px;
+}
+
+.big_or {
+  font-size: 20px;
+}
+
+.inner_wrapper {
+  width: 100%;
+  background-repeat: no-repeat;
+  background-position: right top;
+  background-image: url("../../../assets/images/feature0.png");
+}
+
+@media (max-width:1536px) {
+  .inner_wrapper {
+    background-image: none;
+  }
+}
+
+.round_button {
+  width: 100%;
+  min-width: 250px;
+  padding: 12px 24px;
+  border-radius: 24px;
+  background-color: #33ab3a;
+  font-weight: 700;
+  text-decoration: none;
+  text-align: center;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+}

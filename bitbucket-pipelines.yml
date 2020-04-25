@@ -1,0 +1,57 @@
+image: node:10.15.3
+
+pipelines:
+  branches:
+    feature-*:
+      - step:
+          name: "Buid and Test"
+          caches:
+            - node
+          script:
+            - npm install
+      - step:
+          name: "Deploy to Test Environment"
+          caches:
+            - node
+          deployment: staging
+          script:
+            - npm run build
+            - apt-get update && apt-get install -y python-dev
+            - curl -O https://bootstrap.pypa.io/get-pip.py
+            - python get-pip.py
+            - pip install awscli --upgrade
+            - aws s3 sync ./build s3://onboarding-test.jamfeed.com --acl public-read
+            - aws cloudfront create-invalidation --distribution-id "E2ODUZ7UDB5G0A" --paths "/*"
+    master:
+      - step:
+          name: "Buid and Test"
+          caches:
+            - node
+          script:
+            - npm install
+      - step:
+          name: "Deploy to Test Environment"
+          caches:
+            - node
+          deployment: staging
+          script:
+            - npm run build
+            - apt-get update && apt-get install -y python-dev
+            - curl -O https://bootstrap.pypa.io/get-pip.py
+            - python get-pip.py
+            - pip install awscli --upgrade
+            - aws s3 sync ./build s3://onboarding-test.jamfeed.com --acl public-read
+            - aws cloudfront create-invalidation --distribution-id "E2ODUZ7UDB5G0A" --paths "/*"
+      - step:
+          name: "Deploy to Production Environment"
+          caches:
+            - node
+          deployment: production
+          script:
+            - npm run build
+            - apt-get update && apt-get install -y python-dev
+            - curl -O https://bootstrap.pypa.io/get-pip.py
+            - python get-pip.py
+            - pip install awscli --upgrade
+            - aws s3 sync ./build s3://onboarding.jamfeed.com --acl public-read
+            - aws cloudfront create-invalidation --distribution-id "E3KWCGG5QTRVO2" --paths "/*"
