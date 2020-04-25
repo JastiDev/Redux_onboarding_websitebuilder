@@ -1,4 +1,4 @@
-# JamFeed React-based onboarding webapp
+# React-based onboarding webapp
 
 ![](/readme/Screenshot_4.png)
 ![](/readme/Screenshot_5.png)
